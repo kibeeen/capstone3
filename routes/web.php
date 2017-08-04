@@ -23,8 +23,7 @@ use App\Match;
 
 // --- PagesController --- //
 
-// display index page
-	Route::get('/', 'PagesController@displayIndexPage');
+
 
 // display tournament page
 	Route::get('/tournaments/{id}', 'PagesController@displayTournamentPage');
@@ -71,6 +70,22 @@ use App\Match;
 
 // place bet
 	Route::post('/tournaments/placebet/','ActionsController@addBet');	
+
+
+// middleware
+
+	Route::group(['middleware' => 'auth'], function(){
+
+		// display index page
+			Route::get('/', 'PagesController@displayIndexPage');
+
+	});
+
+	Route::group(['middleware' => 'App\Http\Middleware\AdminMiddleware'], function(){
+		
+		// routes na pang admin
+
+	});
 
 
 

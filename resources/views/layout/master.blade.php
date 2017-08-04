@@ -44,7 +44,8 @@
 		    <ul class="nav navbar-nav navbar-right">
 		    	
 		      <li><a href="#" class='gold-text'><span class="glyphicon glyphicon-coins glyph-coins"></span> {{ Auth::user()->coins }}</a></li>
-		      <li><a href="#" class='inplay-text'>( <span class="glyphicon glyphicon-coins-inplay glyph-coins"></span> {{ Auth::user()->coinsInPlay }} In Play )</a></li>
+		      <li><a href="#" class='inplay-text'>( <span class="glyphicon glyphicon-coins-inplay glyph-coins"></span> 
+		      @if(Auth::user()) {{ Auth::user()->coinsInPlay }} @endif In Play )</a></li>
 		      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 		      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 		    </ul>
