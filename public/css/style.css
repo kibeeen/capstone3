@@ -352,6 +352,10 @@ a:hover {
                         max-height: 50px;
                     }
 
+                    .team-logo-xs {
+                        max-height: 17px;
+                    }
+
 
     /* -- left tournaments -- */
 

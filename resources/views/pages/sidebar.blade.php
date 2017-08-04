@@ -32,14 +32,15 @@
 							{{ $ubets-> coinsWagered }} 
 							</span>
 							<span class="glyphicon glyphicon-coins glyph-coins"></span> 
-							on 
-							{{ $ubets->teamChosenName->teamABV }} at
+							on &nbsp;
 
 								@foreach($matches as $match)
 
 									@if($match->homeTeamID == $ubets->teamChosenID)
+										<img src="{{ asset($match->MatchHomeTeam->teamLogo) }}" class='team-logo-xs'>
 										{{ $match->homeTeamOddsPcnt }}%
 									@elseif($match->awayTeamID == $ubets->teamChosenID)
+									<img src="{{ asset($match->MatchAwayTeam->teamLogo) }}" class='team-logo-xs'>
 										{{ $match->awayTeamOddsPcnt }}%
 									@endif
 
@@ -58,13 +59,13 @@
 							</span>
 							<span class="glyphicon glyphicon-coins glyph-coins"></span> 
 							on 
-							{{ $ubetsall->teamChosenName->teamABV }} at
-
 								@foreach($all_matches as $all_match)
 									@if($all_match->homeTeamID == $ubetsall->teamChosenID)
-										{{ $all_match->homeTeamOddsPcnt }}%
+										<img src="{{ asset($all_match->MatchHomeTeam->teamLogo) }}" class='team-logo-xs'> 
+										({{ $all_match->homeTeamOddsPcnt }}%)
 									@elseif($all_match->awayTeamID == $ubetsall->teamChosenID)
-										{{ $all_match->awayTeamOddsPcnt }}%
+										<img src="{{ asset($all_match->MatchAwayTeam->teamLogo) }}" class='team-logo-xs'> 
+										({{ $all_match->awayTeamOddsPcnt }}%)
 									@endif
 
 								@endforeach
