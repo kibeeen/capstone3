@@ -26,8 +26,8 @@ class PagesController extends Controller
 		$user_bets_all = UserBet::where('userID',$user_id)->get();
 		$all_matches = Match::all();
 
-		dd($all_matches);
 		
+
 		return view('pages/home', compact('matches','live_matches','user_bets_all','all_matches'));
     	
 
