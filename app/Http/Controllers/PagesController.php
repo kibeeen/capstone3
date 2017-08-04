@@ -21,17 +21,11 @@ class PagesController extends Controller
     	$matches = Match::where('inPlay',0)->get();
     	$live_matches = Match::where('inPlay',1)->get();
 
-    	if(Auth::user()){
-    		$user_id = Auth::user()->id;
-    		$user_bets_all = UserBet::where('userID',$user_id)->get();
-    		$all_matches = Match::all();
-    		return view('pages/home', compact('matches','live_matches','user_bets_all','all_matches'));
-    	} else {
-
-    	}
     	
-	    	$all_matches = Match::all();
-    		return view('pages/home', compact('matches','live_matches','user_bets_all','all_matches'));
+    	$user_id = Auth::user()->id;
+		$user_bets_all = UserBet::where('userID',$user_id)->get();
+		$all_matches = Match::all();
+		return view('pages/home', compact('matches','live_matches','user_bets_all','all_matches'));
     	
 
  	
