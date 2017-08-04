@@ -16,7 +16,7 @@ class UserBet extends Model
     }
 
     public function UserBetTeamChosenOdds(){
-        return $this->belongsTo('App\Match', );
+        return $this->belongsTo('App\Match');
     }
 
     public function TeamChosenName(){

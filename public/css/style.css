@@ -353,7 +353,9 @@ a:hover {
                     }
 
                     .team-logo-xs {
-                        max-height: 17px;
+                        max-height: 16px;
+                        margin: 0 3px;
+
                     }
 
 
