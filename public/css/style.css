@@ -1,0 +1,757 @@
+* {
+    box-sizing: border-box;
+}
+
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #191919 url('../uploads/admin/body-bg.jpg');
+    background-repeat: no-repeat;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.input-11 {
+    width: 11%;
+}
+
+.center-me {
+    text-align: center;
+}
+
+#time-left {
+    display: inline-block;
+}
+
+
+/*0d0d0d*/
+
+/* --- game status --- */
+    .box-live {
+        background: #ff2232;
+        border: 1px solid #ca0c1a;
+        box-shadow: 0 0 16px #a01616;
+        display: inline-block;
+        padding: 3px 12px;
+        border-radius: 5px;
+    }
+
+    .box-sm-live {
+        background: #ff2232;
+        border: 1px solid #ca0c1a;
+        box-shadow: 0 0 16px #a01616;
+        display: inline-block;
+        padding: 1px 6px;
+        border-radius: 5px;
+        font-size: 10px;
+        font-family: 'Open Sans';
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #fff;
+        margin-bottom: 8px;
+        margin-right: 5px;
+    }
+
+    .text-live {
+        color: #ff3135 !important;
+        outline-color: #ca0c1a !important;
+        text-shadow: 0 0 8px #a01616;
+    }
+
+    .box-upcoming {
+        /*background: rgb(45, 45, 45);*/
+        border: 1px solid transparent;
+        display: inline-block;
+        padding: 3px 12px;
+        border-radius: 5px;
+    }
+
+    .box-completed {
+        background: #4977dd;
+        border: 1px solid #5489fe;
+        box-shadow: 0 0 16px #34559e;
+        display: inline-block;
+        padding: 3px 9px;
+        border-radius: 5px;
+    }
+
+/* --- media screens --- */
+    @media (min-width: 1200px) {
+        .container {
+            width: 1080px;
+        }
+    }
+
+/* --- navbar --- */
+
+    .navbar {
+        border-radius: 0;
+        min-height: 40px !important;
+    }
+
+    .navbar-brand,
+    .navbar-nav li a {
+        line-height: 40px;
+        height: 40px;
+        padding-top: 0;
+    }
+
+    .navbar-inverse {
+        background-color: #181818;
+        border: none;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        text-align: center;
+        background-color: rgba(0,0,0,1);
+        transition-delay: .00ms;
+        transition: height 300ms cubic-bezier(0.165,0.840,0.440,1.000);
+
+    }
+
+    .navbar-brand {
+        padding: 10px 15px;
+    }
+
+    .navbar-brand-img {
+        height: 20px;
+    }
+
+    .nav-container-fluid {
+        padding-right: 30px;
+        padding-left: 30px;
+    }
+
+    .glyph-coins {
+        top: 3px;
+        margin-right: 3px;
+    }
+
+    .gold-text {
+        color: #ffb129 !important;
+        font-family: 'Open Sans';
+        font-size: 13px;
+    }
+
+    .inplay-text {
+        font-family: 'Open Sans';
+        font-size: 13px;
+    }
+
+/* --- body --- */
+    body {
+        color: #FFF;
+    }
+
+    .main-content {
+        margin-top: 70px;
+    }
+
+    .home-matches-container {
+        background-color: #0d0d0d;
+        padding: 8px;
+    }
+
+    .nav-container {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .matches-divider {
+        border-top: 1px dotted #333;
+        margin-left: -8px;
+        margin-right: -8px;
+    }
+
+    /* -- left home -- */
+
+        /* -- home --*/
+
+            #live-matches {
+                margin-bottom: 30px;
+            }
+
+            #upcoming-matches {
+                margin-bottom: 30px;
+            }
+
+            .matches-header-box {
+                margin: -12px -12px 10px -12px;
+                padding: 12px 0 12px 12px;
+                /*border-bottom: 1px solid #2d2d2d;*/
+                /*border-top: 1px solid #2d2d2d;*/
+                background: linear-gradient(135deg,rgba(39,39,39,1) 0,rgba(27,27,27,1) 95%,rgba(27,27,27,1) 100%);
+            }
+
+            .home-matches-left-box {
+                float: left;
+                width: 70%;
+            }
+
+            .home-matches-left {
+                background-color: #1B1B1B;
+                border: 1px solid #111;
+                border-top: 1px solid #333;
+                padding: 12px;
+                /*padding-right: 4px;*/
+            }
+
+            .matches-header {
+                color: #EBEBEB;
+                font-size: 15px;
+                margin: 0;
+            }
+
+        /* - ul table - */
+
+            .ul-matches {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .ul-matches > li {
+                /*border-bottom: 1px solid #333;*/
+                padding-right: 10px;
+                padding-left: 10px;
+                margin-right: -10px;
+                margin-left: -10px;
+            }
+       
+
+            /*li:nth-of-type(even) {*/
+                /*background-color: #272727*/
+            /*}*/
+
+        /* -- game containers -- */
+
+            .game-id {
+                width: 100%;
+            }
+
+            .game-info {
+                padding: 5px 0;
+            }
+
+            .game-ico {
+                width: 15px;
+                margin-right: 5px;
+                margin-top: -1px;
+            }
+
+            .vs-ico {
+                width: 15px;
+                margin-top: 2px;
+                margin-right: 1px;
+            }
+
+            .game-time {
+                color: #90b526;
+                font-size: 13px;
+            }
+
+            .game-desc {
+                float: right;
+                color: #777;
+                font-size: 10.5px;
+                margin-top: 6px;
+                margin-right: 5px;
+            }
+
+            .match {
+                background-color: #111;
+                opacity: .9;
+                margin-bottom: 5px;
+                padding: 10px;
+                border: 1px solid #333;
+                border-radius: 5px;
+                max-height: 71px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            .match-teams {
+                width: 75%;
+                color: #CCC;
+                float: left;
+                text-align: center;
+                position: relative;
+            }
+
+            .match-tourney-img-box {
+                width: 25%;
+                float: right;
+                margin: -10px;
+            }
+
+            .match-tourney-img {
+                height: 71px !important;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 0 5px 5px 0px;
+                -webkit-mask-image: -webkit-gradient(linear, right bottom, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+            }
+
+                /* -- teams -- */
+
+                    .team-1-name {
+                        width: 29%;
+                        float: left;
+                        font-size: 18px;
+                        margin: 0px 3px 0px 0px;
+                        display: inline-block;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                    }
+
+                    .team-1-logo {
+                        float: left;
+                        max-width: 18.5%;
+                        vertical-align: middle;
+                    }
+
+                    .vs {
+                        font-size: 15px;
+                        font-family: 'Open Sans';
+                        font-weight: 700;
+                        width: 6%;
+                        left: 50%;
+                        position: absolute;
+                        transform: translateX(-50%);
+                    }
+
+                    .team-2-name {
+                        width: 29%;
+                        float: right;
+                        font-size: 18px;
+                        margin: 0px 3px 0px 0px;
+                        display: inline-block;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                    }
+
+                    .team-2-logo {
+                        float: right;
+                        max-width: 18.5%;
+                        vertical-align: middle;
+                    }
+
+                    .team-logo-md {
+                        max-height: 50px;
+                    }
+
+
+    /* -- left tournaments -- */
+
+        /* -- content --*/
+
+            #tournament-matches {
+                margin-bottom: 0;
+                color: #CCC;
+                padding: 8px;
+                box-sizing: content-box;
+                background-color: rgba(0,0,0,0.5);
+                border-bottom: 1px solid #000;
+                height: 200px;
+                margin: -12px 0;
+                margin-right: -12px;
+                margin-left: -12px;
+                position: relative;
+                background-image: url('/uploads/admin/tournaments-top.jpg');
+                background-position: 45% 45%;
+            }
+
+            .tournament-heading-overlay {
+                text-align: center;
+                width: 100%;
+                background-color: transparent;
+                z-index: 1;
+                background-position: -1px 0;
+            }
+
+            .tourney-header-box {
+                color: #CCC;
+                margin: 12px -12px 0 -12px;
+                padding: 12px 0 12px 12px;
+                border-top: 1px solid #393939;
+                background: linear-gradient(180deg,rgba(39,39,39,1) 0,rgba(27,27,27,1) 95%,rgba(27,27,27,1) 100%);
+            }
+
+            .tourney-header-wrapper {
+                text-align: center;
+                padding: 5px 0;
+                margin-bottom: 10px;
+            }
+
+            .team-pick-header {
+                border: 1px solid transparent;
+                margin: 0;
+                font-weight: 600;
+
+            }
+
+            .tourney-name {
+                display: inline-block;
+                text-shadow: 0 0 30px #FFF;
+                margin-bottom: 5px;
+                font-family: 'Open Sans';
+
+            }
+
+            .colon {
+                font-weight: normal !important;
+            }
+
+            .tourney-startdate {
+                margin: 0;
+                font-size: 11px;
+                font-family: 'Open Sans';
+            }
+
+            .tourney-seriesname {
+                margin-top: 10px;
+                font-size: 11px;
+                font-family: 'Open Sans';
+            }
+
+            .tourney-teams {
+                width: 100%;
+                color: #CCC;
+                float: left;
+                text-align: center;
+                position: relative;
+            }
+
+            .vs-score {
+                font-size: 20px;
+                font-family: 'Open Sans';
+                font-weight: 700;
+                width: 10%;
+                left: 50.5%;
+                position: absolute;
+                transform: translateX(-50%);
+            }
+
+            .t-top-border {
+                border-top: 1px solid #393939;
+            }
+
+            #place-bet-content {
+
+            }
+
+            .place-bet-on {
+                font-size: 12px;
+                display: block;
+                margin-bottom: 8px;
+                color: #ccc;
+            }
+
+            .fieldset {
+                border-top: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .glyphicon-coin:before {
+                content: url('/uploads/admin/gold-ico.png');
+            }
+
+            .glyphicon-coins:before {
+                content: url('/uploads/admin/coins-ico.png');
+            }
+
+            .glyphicon-coins-inplay:before {
+                content: url('/uploads/admin/coins-inplay-ico.png');
+            }
+
+            .input-group-addon {
+                padding: 6px 12px;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 1;
+                color: #555;
+                text-align: center;
+                background-color: transparent;
+                border: none;
+                border-radius: 4px;
+            }
+
+            .btn {
+                padding: 5px 12px;
+            }
+
+            .input-bet-coins {
+                width: 15% !important;
+                margin-right: 5px;
+            }
+
+
+
+
+
+
+    /* -- right -- */
+
+        .home-matches-right-box {
+            float: right;
+            width: 29%;
+        }
+
+        .home-matches-right {
+            background-color: #1B1B1B;
+            border: 1px solid #111;
+            border-top: 1px solid #333;
+            padding: 12px;
+            /*padding-left: 4px;*/
+        }
+
+
+            /* -- side match -- */
+
+                .side-match {
+                    position: relative;
+                }
+
+                .team-1-side,
+                .team-2-side {
+                    position: relative;
+                    line-height: 10px;
+                }
+
+                .team-1-name-side {
+                    /*color: #fff;*/
+                    width: 85px;
+                    float: left;
+                    font-size: 12px;
+                    margin: 0px 3px 0px 0px;
+                    display: inline-block;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    z-index: 2;
+                }
+
+                .team-1-logo-sm {
+                    height: 30px;
+                    width: 100px;
+                    object-fit: cover;
+                    z-index: 0;
+                    margin-left: -12px;
+                    margin-top: -10px;
+                    opacity: 0.8;
+                    position: absolute;
+                    left: 0;
+                    -webkit-mask-image: -webkit-gradient(linear, right bottom, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+                }
+
+                .team-2-name-side {
+                    /*color: #fff;*/
+                    width: 85px;
+                    float: right;
+                    font-size: 12px;
+                    margin: 0px 3px 0px 0px;
+                    display: inline-block;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    z-index: 2;
+                }
+
+                .team-2-logo-sm {
+                    height: 30px;
+                    width: 100px;
+                    object-fit: cover;
+                    z-index: 0;
+                    margin-right: -12px;
+                    margin-top: -10px;
+                    opacity: 0.8;
+                    position: absolute;
+                    right: 0;
+                    -webkit-mask-image: -webkit-gradient(linear, right bottom, left top, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+                }
+
+                .vs-side {
+                    float: left;
+                    line-height: 9px;
+                }
+
+
+/* --- admin-panel --- */
+
+    .admin-container {
+        margin-top: 40px;
+        height: auto;
+        color: #050505;
+        background-color: #eee;
+        padding: 15px;
+    }
+
+    /* -- sidebar -- */
+        .admin-sidebar {
+            width: 180px;
+            font-size: 12px;
+            position: fixed;
+        }
+
+        .ul-admin-sidebar {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .ul-admin-sidebar > a > li:hover {
+            color: #999;
+            transition: color .15s ease-out;
+            -moz-transition: color .15s ease-out;
+            -webkit-transition: color .15s ease-out;
+            -o-transition: color .15s ease-out;
+        }
+
+        .ul-admin-sidebar > a {
+            color: #fff;
+            text-decoration: none;
+
+        }
+
+        .ul-admin-sidebar > a > li {
+            color: #fff;
+            border-bottom: 1px solid #444;
+            margin: auto -5px;
+            padding: 10px 15px;
+
+        }
+
+        .ul-admin-sidebar > a > li:last-child {
+            /*border-bottom: none;*/
+            margin: auto -5px;
+            padding: 10px 15px;
+        }
+
+        .ul-admin-sidebar > a > li > i {
+            margin-right: 10px;
+        }
+
+        .admin-sidebar-boxes {
+            background-color: #323232;
+            border-radius: 3px;
+            color: #fff;
+            font-family: 'Open Sans';
+            padding: 1px 5px;
+            margin-bottom: 20px;
+        }
+
+        /* -- badges -- */
+
+            .badge {
+                display: inline-block;
+                min-width: 10px;
+                padding: 5px 7px;
+                font-size: 10px;
+                font-weight: 700;
+                line-height: 7px;
+                color: #fff;
+                text-align: center;
+                white-space: nowrap;
+                vertical-align: middle;
+                background-color: #ff5555;
+                float: right;
+                border-radius: 10px;
+            }
+
+            .live-badge {
+                background-color: #ed4359;
+            }
+
+            .deposits-badge {
+                background-color: #98cb4a;
+            }
+
+            .withdrawals-badge {
+                background-color: #1dbcd2;
+            }
+
+            .update-badge {
+                background-color: #f76d3c;
+            }
+
+            .message-badge {
+                background-color: #913ccd;
+            }
+
+            .users-badge {
+                background-color: #777;
+            }
+
+    /* -- admin main-content -- */
+
+        .admin-main-content {
+            width: 82.5%;
+            float: right;
+            padding: 0 0 0 12px;
+            font-size: 12px;
+        }
+
+        .admin-panel-header {
+            margin: 5px 0;
+            font-family: 'Open Sans';
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .form-control {
+            height: 32px;
+            padding: 5px 12px;
+            font-size: 14px;
+        }
+
+        label.col-sm-2 {
+            padding-right: 0px;
+            padding-left: 7px;
+        }
+
+        .date-padding {
+            padding-right: 0;
+            width: 20%;
+        }
+
+        .time-padding {
+            padding-right: 0;
+            width: 15%;
+        }
+
+        .form-control-file {
+            display: block;
+            width: 100%;
+            height: 32px;
+            padding: 6px 1px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555; 
+        }
+
+        .panel-default > .panel-heading {
+            color: #fff;
+            background-color: #323232;
+            border-color: #ddd;
+        }
+
+        .drop-up-box {
+            font-weight: bold;
+        }
+
+
+        
+
+
