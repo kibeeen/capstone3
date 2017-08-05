@@ -18,17 +18,18 @@ class PagesController extends Controller
 {
     public function displayIndexPage(){
     	
-    	$matches = Match::where('inPlay',0)->get();
-    	$live_matches = Match::where('inPlay',1)->get();
+    	$matches = Match::where('inPlay',0)->where('finished',0)->orderBy('startTime','asc')->get();
+        $live_matches = Match::where('inPlay',1)->where('finished',0)->get();
+    	$recent_matches = Match::where('finished',1)->get();
 
     	
     	$user_id = Auth::user()->id;
-		$user_bets_all = UserBet::where('userID',$user_id)->get();
+		$user_bets_all = UserBet::where('userID',$user_id)->limit(12)->orderBy('updated_at','desc')->get();
 		$all_matches = Match::all();
 
 		
 
-		return view('pages/home', compact('matches','live_matches','user_bets_all','all_matches'));
+		return view('pages/home', compact('matches','live_matches','user_bets_all','all_matches','recent_matches'));
     	
 
  	
@@ -38,7 +39,7 @@ class PagesController extends Controller
 
 	public function displayTournamentPage($id){
     	$matches = Match::all()->where('id',$id);
-    	$user_bets = UserBet::all()->where('matchID',$id);
+    	$user_bets = UserBet::where('matchID',$id)->orderBy('updated_at','desc')->get();
     	
     	
 

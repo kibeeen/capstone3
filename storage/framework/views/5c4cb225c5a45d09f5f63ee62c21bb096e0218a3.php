@@ -43,11 +43,36 @@
 		    </div>
 		    <ul class="nav navbar-nav navbar-right">
 		    	
-		      <li><a href="#" class='gold-text'><span class="glyphicon glyphicon-coins glyph-coins"></span> <?php echo e(Auth::user()->coins); ?></a></li>
-		      <li><a href="#" class='inplay-text'>( <span class="glyphicon glyphicon-coins-inplay glyph-coins"></span> 
-		      <?php echo e(Auth::user()->coinsInPlay); ?> In Play )</a></li>
-		      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-		      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			    <li>
+			      	<a href="#" class='gold-text'>
+			      		<span class="glyphicon glyphicon-coins glyph-coins"></span> 
+			      			<?php echo e(Auth::user()->coins); ?>
+
+	      			</a>
+	      		</li>
+
+			    <li>
+			      	<a href="#" class='inplay-text'>( 
+			      		<span class="glyphicon glyphicon-coins-inplay glyph-coins"></span> 
+			      			<?php echo e(Auth::user()->coinsInPlay); ?> In Play )
+				    </a>
+			    </li>
+
+			    <?php if(Auth::user()): ?>
+			    	<li>
+				    	<a href class='user-text'>
+					    	<img src='<?php echo e(URL::asset("uploads/admin/bitcoin_avatar_small.png")); ?>'>
+					    	<?php echo e(Auth::user()->username); ?>
+
+					    	[<?php echo e(Auth::user()->id); ?>]&nbsp;
+					    	<i class="fa fa-caret-down" aria-hidden="true"></i>
+
+				    	</a>
+			    	</li>
+			    <?php else: ?>
+			    	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			    	<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			    <?php endif; ?>
 		    </ul>
 		  </div>
 		</nav>	

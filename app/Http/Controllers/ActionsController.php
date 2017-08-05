@@ -12,6 +12,7 @@ use App\Team;
 use App\League;
 use App\Match;
 use App\UserBet;
+use App\User;
 use Auth;
 use Session;
 
@@ -49,6 +50,8 @@ class ActionsController extends Controller
         $match_categories = MatchCategory::all();
         $teams = Team::all();
         $leagues = League::all();
+
+        $teams_participated = Match::where('id',10)->get();
 
         return view('admin-pages/update-matches', compact('game_series','match_categories','teams','matches','leagues'));
     }
@@ -120,7 +123,152 @@ class ActionsController extends Controller
 
         $match_tbu->save();
 
-        return redirect('/matches');
+        return redirect('/update-matches');
+    }
+
+    public function endMatch(request $request){
+        $match_id = $request->hidden_match_id1;
+        $end_match = Match::find($match_id);
+
+        $winner_team = $request->select_game_winner_id;
+
+        
+        if($end_match->awayTeamID == $winner_team){
+
+            $find_bet = UserBet::where('matchID',$match_id)
+            ->where('teamChosenID',$winner_team)
+            ->get();
+
+            $other_bet = UserBet::where('matchID',$match_id)
+            ->where('teamChosenID','!=',$winner_team)
+            ->get();
+
+
+            $admin_coins = User::where('role','admin')->get();
+            foreach($admin_coins as $admin_coin){
+                $bank = $admin_coin->coins;
+            }
+
+            foreach($other_bet as $obet){
+
+                // find the bettor
+                $find_bettors = User::where('id',$obet->userID)->get();
+
+                foreach($find_bettors as $fbettors){
+
+                    // dd($obet->coinsWagered * $end_match->awayTeamOdds);
+                    $fbettors->coinsInPlay -= $obet->coinsWagered;
+                    // $fbettors->coins += ($obet->coinsWagered * $end_match->awayTeamOdds) + $obet->coinsWagered;
+                    
+                    // $coins = $fbettors->coins;
+                    $coinsInPlay = $fbettors->coinsInPlay;
+                   
+                    // add 5.5% betting fee coins to the bank
+                    // $bank += ($end_match->betsHomeTotal * 0.055);
+                }
+
+                // $end_match->awayTeamWin = 1;
+                // $end_match->draw = 0;
+                // $end_match->homeTeamWin = 0;
+                // $end_match->inPlay = 0;
+                // $end_match->finished = 1;
+                // $end_match->save();
+
+
+                // $find_bet->inPlay = 0;
+                // $find_bet->betWon = 1;
+                // $find_bet->betLose = 0;
+                // $find_bet->betLocked = 1;
+
+                UserBet::where('matchID', $match_id)
+                ->where('teamChosenID','!=',$winner_team)
+                ->update(array(
+                    'inPlay' => 0,
+                    'betWon' => 0,
+                    'betLose' => 1,
+                    'betLocked' => 1
+                    ));
+
+
+                // $find_bettors->coins = $coins;
+                $find_bettors->coinsInPlay = $coinsInPlay;
+
+                User::where('id', $obet->userID)->update(array(
+                    'coinsInPlay' => $coinsInPlay
+                    ));
+
+
+                // $admin_coins->coins = $bank;
+
+                // User::where('role', 'admin')->update(array(
+                //     'coins' => $bank
+                //     ));
+
+            }
+
+            foreach($find_bet as $fbet){
+
+                // find the bettor
+                $find_bettors = User::where('id',$fbet->userID)->get();
+
+                foreach($find_bettors as $fbettors){
+
+                    // dd($fbet->coinsWagered * $end_match->awayTeamOdds);
+                    $fbettors->coinsInPlay -= $fbet->coinsWagered;
+                    $fbettors->coins += ($fbet->coinsWagered * $end_match->awayTeamOdds) + $fbet->coinsWagered;
+                    
+
+                    $coins = $fbettors->coins;
+                    $coinsInPlay = $fbettors->coinsInPlay;
+                   
+                    // add 5.5% betting fee coins to the bank
+                    $bank += ($end_match->betsHomeTotal * 0.055);
+
+                }
+
+                $end_match->awayTeamWin = 1;
+                $end_match->draw = 0;
+                $end_match->homeTeamWin = 0;
+                $end_match->inPlay = 0;
+                $end_match->finished = 1;
+                $end_match->save();
+
+
+                $find_bet->inPlay = 0;
+                $find_bet->betWon = 1;
+                $find_bet->betLose = 0;
+                $find_bet->betLocked = 1;
+
+                UserBet::where('matchID', $match_id)
+                ->where('teamChosenID',$winner_team)
+                ->update(array(
+                    'inPlay' => 0,
+                    'betWon' => 1,
+                    'betLose' => 0,
+                    'betLocked' => 1
+                    ));
+
+
+                $find_bettors->coins = $coins;
+                $find_bettors->coinsInPlay = $coinsInPlay;
+
+                User::where('id', $fbet->userID)->update(array(
+                    'coins' => $coins,
+                    'coinsInPlay' => $coinsInPlay
+                    ));
+
+
+                $admin_coins->coins = $bank;
+
+                User::where('role', 'admin')->update(array(
+                    'coins' => $bank
+                    ));
+
+            }
+
+        } // end if statement
+  
+        return redirect('/update-matches');
     }
 
     public function startMatch($id){
@@ -320,6 +468,12 @@ class ActionsController extends Controller
                 return back();
 
             }
-    }
+    } // end function
+
+
+
+
+
+
 
 }

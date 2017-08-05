@@ -38,6 +38,7 @@ use App\Match;
 	Route::post('/matches/add/', 'ActionsController@addMatch');
 	Route::post('/matches/update/', 'ActionsController@updateMatch');
 	Route::get('/matches/start/{id}', 'ActionsController@startMatch');
+	Route::post('/matches/end/', 'ActionsController@endMatch');
 
 // add teams page
 	Route::get('/teams', 'ActionsController@displayPagesTeam');
@@ -101,18 +102,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 		// alert('$request->team_name');
 
-		
 		$get_teamID = $request->team_name;
-
 
 		$teamName = Team::find($get_teamID);
 
+		// echo json_encode($teamName);
 
-		// dd($teamName);
-
-		// json_encode($teamName);
-
-		echo json_encode($teamName);
 	});
 
 // [ajax] displayMatchInfoOnUpdatePage

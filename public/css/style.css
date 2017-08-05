@@ -48,6 +48,14 @@ a:hover {
         border-radius: 5px;
     }
 
+    .box-recent {
+        /*background: rgb(45, 45, 45);*/
+        border: 1px solid transparent;
+        display: inline-block;
+        padding: 3px 12px;
+        border-radius: 5px;
+    }
+
     .box-sm-live {
         background: #ff2232;
         border: 1px solid #ca0c1a;
@@ -64,10 +72,48 @@ a:hover {
         margin-right: 5px;
     }
 
+    .box-sm-ended {
+        background: #000000;
+        border: 1px solid #2f2f2f;
+        box-shadow: 0 0 16px #272727;
+        display: inline-block;
+        padding: 1px 6px;
+        border-radius: 5px;
+        font-size: 10px;
+        font-family: 'Open Sans';
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #fff;
+        margin-bottom: 8px;
+        margin-right: 5px;
+    }
+
+    .box-sm-upcoming {
+        background: rgb(27, 27, 27);
+        border: 1px solid transparent;
+        display: inline-block;
+        padding: 3px 12px;
+        border-radius: 5px;
+        font-size: 10px;
+        font-family: 'Open Sans';
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #90b526 !important;
+        margin-bottom: 8px;
+        margin-right: 6px;
+        margin-left: -5px;
+    }
+
     .text-live {
         color: #ff3135 !important;
         outline-color: #ca0c1a !important;
         text-shadow: 0 0 8px #a01616;
+    }
+
+    .text-recent {
+        color: #636363 !important;
+        outline-color: #4c4c4c !important;
+        
     }
 
     .box-upcoming {
@@ -76,6 +122,7 @@ a:hover {
         display: inline-block;
         padding: 3px 12px;
         border-radius: 5px;
+        color: #90b526 !important;
     }
 
     .box-completed {
@@ -143,9 +190,26 @@ a:hover {
         font-size: 13px;
     }
 
+    .gold-text-xs {
+        color: #ffb129 !important;
+        font-family: 'Open Sans';
+        font-size: 11px;
+        margin-left: 5px;
+    }
+
+    .sidebar-gameico {
+        margin-right: 10px !important;
+    }
+
     .inplay-text {
         font-family: 'Open Sans';
         font-size: 13px;
+    }
+
+    .user-text {
+        font-family: 'Open Sans';
+        font-size: 13px;
+        color: white;
     }
 
 /* --- body --- */
@@ -227,6 +291,31 @@ a:hover {
                 margin-right: -10px;
                 margin-left: -10px;
             }
+
+            
+
+            .ul-placed-bets {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .ul-placed-bets > li {
+                border-bottom: 1px solid #333;
+                padding: 5px 5px;
+            }
+
+            .li-placed-bets:nth-child(even) {
+                border-bottom: 1px solid #333;
+                background-color: #272727;
+                padding: 5px 5px;
+            }
+
+            .li-placed-bets:last-child {
+                border-bottom: none;
+                background-color: transparent;
+                padding: 5px 5px;
+            }
        
 
             /*li:nth-of-type(even) {*/
@@ -237,6 +326,11 @@ a:hover {
 
             .game-id {
                 width: 100%;
+            }
+
+            .game-id-recent {
+                width: 100%;
+                opacity: .25;
             }
 
             .game-info {
@@ -252,6 +346,12 @@ a:hover {
             .vs-ico {
                 width: 15px;
                 margin-top: 2px;
+                margin-right: 1px;
+            }
+
+            .vs-ico-recent {
+                width: 15px;
+                margin-top: -10px;
                 margin-right: 1px;
             }
 
@@ -317,7 +417,26 @@ a:hover {
 
                     .team-1-logo {
                         float: left;
+                        position: relative;
                         max-width: 18.5%;
+                        vertical-align: middle;
+                    }
+
+                    .team-1-name-lg {
+                        width: 24.5%;
+                        float: left;
+                        font-size: 18px;
+                        margin: 0px 3px 0px 0px;
+                        display: inline-block;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                    }
+
+                    .team-1-logo-lg {
+                        float: left;
+                        position: relative;
+                        max-width: 24%;
                         vertical-align: middle;
                     }
 
@@ -344,8 +463,31 @@ a:hover {
 
                     .team-2-logo {
                         float: right;
+                        position: relative;
                         max-width: 18.5%;
                         vertical-align: middle;
+                    }
+
+                     .team-2-name-lg {
+                        width: 24.5%;
+                        float: right;
+                        font-size: 18px;
+                        margin: 0px 3px 0px 0px;
+                        display: inline-block;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                    }
+
+                    .team-2-logo-lg {
+                        float: right;
+                        position: relative;
+                        max-width: 24%;
+                        vertical-align: middle;
+                    }
+
+                    .team-logo-lg {
+                        max-height: 70px;
                     }
 
                     .team-logo-md {
@@ -354,8 +496,22 @@ a:hover {
 
                     .team-logo-xs {
                         max-height: 16px;
+                        max-width: 16px;
                         margin: 0 3px;
+                    }
 
+                    .win-crown {
+                        top: -5%;
+                        left: -11%;
+                        height: 18px;
+                        position: absolute;
+                    }
+
+                    .win-crown-lg {
+                        top: -5%;
+                        left: -11%;
+                        height: 22px;
+                        position: absolute;
                     }
 
 
@@ -405,6 +561,7 @@ a:hover {
                 border: 1px solid transparent;
                 margin: 0;
                 font-weight: 600;
+                text-align: center;
 
             }
 
@@ -418,6 +575,10 @@ a:hover {
 
             .colon {
                 font-weight: normal !important;
+            }
+
+            .margin-bot-0 {
+                margin-bottom: 0;
             }
 
             .tourney-startdate {
@@ -460,8 +621,8 @@ a:hover {
 
             .place-bet-on {
                 font-size: 12px;
-                display: block;
-                margin-bottom: 8px;
+                font-family: 'Open Sans';
+                display: inline-block;
                 color: #ccc;
             }
 
@@ -475,6 +636,10 @@ a:hover {
 
             .glyphicon-coins:before {
                 content: url('/uploads/admin/coins-ico.png');
+            }
+
+            .glyphicon-coins-sm:before {
+                content: url('/uploads/admin/coins-sm.png');
             }
 
             .glyphicon-coins-inplay:before {
@@ -590,6 +755,13 @@ a:hover {
                 .vs-side {
                     float: left;
                     line-height: 9px;
+                }
+
+                .end-match-panel {
+                    font-family: 'Open Sans';
+                    font-size: 12px;
+                    font-weight: bold;
+                    text-transform: uppercase;
                 }
 
 

@@ -48,13 +48,13 @@
 							    		<?php if($match->inPlay == 1): ?>
 							    			<option value="<?php echo e($match->id); ?>">
 								    			Live - 
-								    			<?php echo e($match->matchName); ?>
+								    			<?php echo e($match->matchName . " " . $match->id); ?>
 
 							    			</option>
 							    		<?php elseif($match->inPlay == 0): ?>
 							    			<option value="<?php echo e($match->id); ?>">
 								    			Upcoming - 
-								    			<?php echo e($match->matchName); ?>
+								    			<?php echo e($match->matchName . " " . $match->id); ?>
 
 							    			</option>
 						    			<?php endif; ?>
@@ -65,14 +65,10 @@
 
 						    </div>
 
-						    <div class="col-sm-2">
-						    <a href='/matches/start/<?php echo e($match->id); ?>'>
-						      	<button type='button' class="form-control center-me btn btn-primary" id="start_match" name='start_match' disabled>
-						      		<i class="fa fa-play-circle"></i>&nbsp; Start Match
-					      		</button>
-				      		</a>
+						    <div class="col-sm-2" id='start-match-div'>
+								
 						    </div>
-						</div>	
+						</div>
 
 						<hr>
 
@@ -188,6 +184,47 @@
 					</form>	
 				</div> 
 			</div> 
+				
+
+		    <div class="panel panel-primary margin-bot-0">
+			  	<div class="panel-heading end-match-panel">End Match</div>
+			 	<div class="panel-body">
+			 	<form class="form-horizontal" action='/matches/end/' method="post">
+						<?php echo e(csrf_field()); ?>
+
+
+			 		<div class="form-group">
+					  	<label for="select_game_winner_id" class="control-label col-sm-2">Game Winner :</label>
+					  	<div class="col-sm-4">
+
+					  		<input type='hidden' value='' id="hidden_match_id1" name='hidden_match_id1'>
+					  		<input type='hidden' value='' id="hidden_otherteam" name='hidden_otherteam'>
+					  
+						  	<select class="form-control" id="select_game_winner_id" name='select_game_winner_id' disabled>
+						  	
+						    	<option  id="option_game_winner1" name='option_game_winner1' value=''></option>
+						    	<option  id="option_game_winner2" name='option_game_winner2' value='0'>Draw</option>
+						    	<option  id="option_game_winner3" name='option_game_winner3' value=''></option>
+
+
+					    	
+						  	</select>
+					  	</div>
+					</div>
+
+					<div class="form-group"> 
+					    <div class="col-sm-offset-2 col-sm-2">
+						    <button type="submit" class="btn btn-primary">
+						    	<i class="fa fa-trophy" aria-hidden="true"></i>
+						    	&nbsp; Declare Winner!
+					    	</button>
+					    </div>
+				  	</div>
+			  	</form>
+		 		</div>
+			</div>
+
+					    
 		</div> 
 
 	</div>
@@ -204,6 +241,10 @@
 
 	$('#select_match_id').change(function(){
 
+		var selected_team = $('#select_match_id').val();
+
+		$('#start-match-div').html("<a href='/matches/start/" + selected_team + "'><button type='button' class='form-control center-me btn btn-primary' id='start_match' name='start_match' disabled><i class='fa fa-play-circle'></i>&nbsp; Start Match</button></a>");
+
 
 		$.post("/api/displayMatchInfo/",
 
@@ -213,9 +254,10 @@
 
 
 	    },
-	    function(data, status){
+	    function(data){
 
     	    var match_info = JSON.parse(data);
+
 	        $('#update_home_team').val(match_info.homeTeamID);
 	        $('#update_away_team').val(match_info.awayTeamID);
 
@@ -223,6 +265,19 @@
 
 	        $('#update_home_team_score').val(match_info.homeTeamScore);
 	        $('#update_away_team_score').val(match_info.awayTeamScore);
+
+
+	        $('#option_game_winner1').val(match_info.homeTeamID);
+	        $('#option_game_winner1').html(match_info.homeTeamID);
+
+
+	        $('#option_game_winner3').val(match_info.awayTeamID);
+
+	        $('#option_game_winner3').html(match_info.awayTeamID);
+	        // $('#endmatch_href').attr('href',"/matches/end/"+match_info.id);
+
+	        $('#hidden_match_id1').val($('#select_match_id').val());
+	        // $('#hidden_otherteam').val($('#select_match_id').val());
 
 	        $('#update_home_team_odds').val(match_info.homeTeamOddsPcnt+"%");
 	        $('#update_away_team_odds').val(match_info.awayTeamOddsPcnt+"%");
@@ -235,7 +290,9 @@
 
 	        $('#start_match').removeAttr('disabled');
 	        $('#end_match').removeAttr('disabled');
-	 	        
+
+	        $('#select_game_winner_id').removeAttr('disabled');
+ 	        
 	    });
 
 	});		

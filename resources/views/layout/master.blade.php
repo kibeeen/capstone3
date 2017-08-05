@@ -43,11 +43,34 @@
 		    </div>
 		    <ul class="nav navbar-nav navbar-right">
 		    	
-		      <li><a href="#" class='gold-text'><span class="glyphicon glyphicon-coins glyph-coins"></span> {{ Auth::user()->coins }}</a></li>
-		      <li><a href="#" class='inplay-text'>( <span class="glyphicon glyphicon-coins-inplay glyph-coins"></span> 
-		      {{ Auth::user()->coinsInPlay }} In Play )</a></li>
-		      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-		      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			    <li>
+			      	<a href="#" class='gold-text'>
+			      		<span class="glyphicon glyphicon-coins glyph-coins"></span> 
+			      			{{ Auth::user()->coins }}
+	      			</a>
+	      		</li>
+
+			    <li>
+			      	<a href="#" class='inplay-text'>( 
+			      		<span class="glyphicon glyphicon-coins-inplay glyph-coins"></span> 
+			      			{{ Auth::user()->coinsInPlay }} In Play )
+				    </a>
+			    </li>
+
+			    @if(Auth::user())
+			    	<li>
+				    	<a href class='user-text'>
+					    	<img src='{{ URL::asset("uploads/admin/bitcoin_avatar_small.png") }}'>
+					    	{{ Auth::user()->username }}
+					    	[{{ Auth::user()->id }}]&nbsp;
+					    	<i class="fa fa-caret-down" aria-hidden="true"></i>
+
+				    	</a>
+			    	</li>
+			    @else
+			    	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+			    	<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			    @endif
 		    </ul>
 		  </div>
 		</nav>	

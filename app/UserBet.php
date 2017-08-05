@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class UserBet extends Model
 {
     public function Bettor(){
-    	return $this->belongsTo('App\User');
+    	return $this->belongsTo('App\User','userID');
 
     }
 
     public function UserBetMatchID(){
-        return $this->belongsTo('App\Match');
+        return $this->belongsTo('App\Match','matchID');
     }
 
     public function UserBetTeamChosenOdds(){
