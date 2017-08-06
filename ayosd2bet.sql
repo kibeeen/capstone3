@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 04, 2017 at 11:14 AM
+-- Generation Time: Aug 06, 2017 at 05:55 PM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.2
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -69,7 +69,8 @@ INSERT INTO `leagues` (`id`, `leagueName`, `leagueBanner`, `leagueStartDate`, `l
 (2, 'StarLadder i-League Invitational #2', 'uploads/admin/league-banners/StarLadder i-League Invitational 2.png', '2017-09-05', '2017-09-12', '2017-07-28 07:48:28', '2017-07-28 07:48:28'),
 (3, 'StarLadder', 'uploads/admin/league-banners/StarLadder.jpg', '2017-07-31', '2017-08-23', '2017-07-31 14:13:11', '2017-07-31 14:13:11'),
 (4, 'Mayweather vs McGregor', 'uploads/admin/league-banners/Mayweather vs McGregor.jpg', '2017-08-27', '2017-08-27', '2017-08-02 08:14:46', '2017-08-02 08:14:46'),
-(5, 'Conor McGregor vs Floyd Mayweather - The Money Fight', 'uploads/admin/league-banners/Conor McGregor vs Floyd Mayweather - The Money Fight.jpg', '2017-08-27', '2017-08-28', '2017-08-04 04:55:22', '2017-08-04 04:55:22');
+(5, 'Conor McGregor vs Floyd Mayweather - The Money Fight', 'uploads/admin/league-banners/Conor McGregor vs Floyd Mayweather - The Money Fight.jpg', '2017-08-27', '2017-08-28', '2017-08-04 04:55:22', '2017-08-04 04:55:22'),
+(6, 'NBA 2017-2018 Season', 'uploads/admin/league-banners/NBA 2017-2018 Season.jpg', '2017-10-18', '2018-04-18', '2017-08-06 03:11:08', '2017-08-06 03:11:08');
 
 -- --------------------------------------------------------
 
@@ -110,9 +111,11 @@ CREATE TABLE `matches` (
 --
 
 INSERT INTO `matches` (`id`, `matchName`, `matchCategoryID`, `gameSeriesID`, `sportsCatID`, `betsTotal`, `betsHomeTotal`, `betsAwayTotal`, `homeTeamID`, `homeTeamScore`, `homeTeamWin`, `homeTeamOdds`, `homeTeamOddsPcnt`, `draw`, `awayTeamID`, `awayTeamScore`, `awayTeamWin`, `awayTeamOdds`, `awayTeamOddsPcnt`, `inPlay`, `finished`, `leagueID`, `startTime`, `created_at`, `updated_at`) VALUES
-(10, '2017-08-04 00:00 - TNC Pro Team vs Evil Genius', 1, 2, 1, 550, 330, 220, 6, 0, 0, '0.63', '60', 0, 1, 0, 0, '1.42', '40', 1, 0, 1, '2017-08-04 00:00', '2017-08-03 13:15:28', '2017-08-04 06:27:14'),
-(11, '2017-08-04 00:00 - Digital Chaos vs Virtus Pro', 1, 2, 1, 120, 50, 70, 5, 0, 0, '1.32', '42', 0, 7, 0, 0, '0.68', '58', 1, 0, 1, '2017-08-04 00:00', '2017-08-03 13:16:26', '2017-08-04 03:44:10'),
-(12, '2017-08-27 10:00 - Connor McGregor vs Floyd Mayweather', 4, 1, 6, 55, 5, 50, 13, 0, 0, '9.45', '9', 0, 10, 0, 0, '0.09', '91', 0, 0, 5, '2017-08-27 10:00', '2017-08-04 04:56:45', '2017-08-04 06:15:18');
+(14, '2017-08-06 02:00 - Evil Genius vs Team Fnatic', 4, 1, 1, 1000, 500, 500, 4, 0, 0, '0.95', '50', 0, 6, 1, 1, '0.95', '50', 0, 1, 1, '2017-08-06 02:00', '2017-08-05 15:45:40', '2017-08-05 17:49:20'),
+(15, '2017-08-06 04:30 - TNC Pro Team vs Team Liquid', 4, 3, 1, 700, 200, 500, 2, 2, 1, '2.36', '29', 0, 1, 0, 0, '0.38', '71', 0, 1, 1, '2017-08-06 04:30', '2017-08-05 15:46:16', '2017-08-06 10:18:49'),
+(16, '2017-08-27 10:00 - Conor McGregor vs Floyd Mayweather', 4, 1, 6, 0, 0, 0, 13, 0, 0, '0.00', '0', 0, 12, 0, 0, '0.00', '0', 0, 0, 5, '2017-08-27 10:00', '2017-08-05 15:47:10', '2017-08-05 15:47:10'),
+(17, '2017-08-08 08:00 - Virtus Pro vs Evil Genius', 4, 3, 1, 85, 80, 5, 6, 0, 0, '0.06', '94', 0, 5, 0, 0, '15.12', '6', 0, 0, 1, '2017-08-08 08:00', '2017-08-05 15:47:49', '2017-08-06 15:23:07'),
+(18, 'Los Angeles Lakers vs Oklahoma Thunders', 4, 1, 8, 0, 0, 0, 14, 0, 0, '0.00', '0', 0, 15, 0, 0, '0.00', '0', 0, 0, 6, '2017-11-01 10:00', '2017-08-06 03:13:59', '2017-08-06 03:13:59');
 
 -- --------------------------------------------------------
 
@@ -204,10 +207,9 @@ CREATE TABLE `sports_categories` (
 
 INSERT INTO `sports_categories` (`id`, `sportsCatName`, `sportsCatIMG`, `created_at`, `updated_at`) VALUES
 (1, 'Dota 2', 'uploads/admin/sports-category-thumbnails/Dota 2.png', '2017-07-28 13:37:52', '2017-07-28 13:37:52'),
-(2, 'Basketball', 'uploads/admin/sports-category-thumbnails/Basketball.jpg', '2017-07-28 13:39:10', '2017-07-28 13:39:10'),
-(3, 'Soccer', 'uploads/admin/sports-category-thumbnails/Soccer.jpg', '2017-07-28 13:40:14', '2017-07-28 13:40:14'),
 (6, 'MMA - UFC', 'uploads/admin/sports-category-thumbnails/MMA - UFC.png', '2017-08-02 08:05:24', '2017-08-02 08:05:24'),
-(7, 'MMA - UFC', 'uploads/admin/sports-category-thumbnails/MMA - UFC.png', '2017-08-04 04:53:38', '2017-08-04 04:53:38');
+(8, 'Basketball - NBA', 'uploads/admin/sports-category-thumbnails/Basketball - NBA.png', '2017-08-06 03:06:48', '2017-08-06 03:06:48'),
+(9, 'Soccer', 'uploads/admin/sports-category-thumbnails/Soccer.png', '2017-08-06 03:59:03', '2017-08-06 03:59:03');
 
 -- --------------------------------------------------------
 
@@ -239,11 +241,10 @@ INSERT INTO `teams` (`id`, `teamABV`, `teamName`, `teamLogo`, `sportsCategoryID`
 (6, 'EG', 'Evil Genius', 'uploads/admin/team-logos/Evil Genius.png', 1, NULL, '2017-07-31 17:10:44', '2017-07-31 17:10:44'),
 (7, 'DC', 'Digital Chaos', 'uploads/admin/team-logos/Digital Chaos.png', 1, NULL, '2017-07-31 17:10:58', '2017-07-31 17:10:58'),
 (8, 'OG', 'OG Dota 2', 'uploads/admin/team-logos/OG Dota 2.png', 1, NULL, '2017-07-31 17:11:27', '2017-07-31 17:11:27'),
-(9, 'LGD', 'LGD Gaming', 'uploads/admin/team-logos/LGD Gaming.png', 1, NULL, '2017-07-31 17:11:44', '2017-07-31 17:11:44'),
-(10, 'Connor', 'Connor McGregor', 'uploads/admin/team-logos/Connor McGregor.png', 1, NULL, '2017-08-02 08:11:37', '2017-08-02 08:11:37'),
-(11, 'Gay', 'Floyd Gayweather', 'uploads/admin/team-logos/Floyd Gayweather.png', 6, NULL, '2017-08-02 08:12:44', '2017-08-03 11:03:19'),
 (12, 'Conor', 'Conor McGregor', 'uploads/admin/team-logos/Conor McGregor.png', 6, NULL, '2017-08-04 04:55:57', '2017-08-04 04:55:57'),
-(13, 'Floyd', 'Floyd Mayweather', 'uploads/admin/team-logos/Floyd Mayweather.png', 6, NULL, '2017-08-04 04:56:12', '2017-08-04 04:56:12');
+(13, 'Floyd', 'Floyd Mayweather', 'uploads/admin/team-logos/Floyd Mayweather.png', 6, NULL, '2017-08-04 04:56:12', '2017-08-04 04:56:12'),
+(14, 'OKC', 'Oklahoma Thunders', 'uploads/admin/team-logos/Oklahoma Thunders.png', 8, NULL, '2017-08-06 03:11:49', '2017-08-06 03:11:49'),
+(15, 'Lakers', 'Los Angeles Lakers', 'uploads/admin/team-logos/Los Angeles Lakers.png', 8, NULL, '2017-08-06 03:12:25', '2017-08-06 03:12:25');
 
 -- --------------------------------------------------------
 
@@ -280,8 +281,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`, `displayIMG`, `rankID`, `coins`, `coinsInPlay`, `pendingCashIn`, `pendingCashOut`, `banned`, `muted`, `firstName`, `middleName`, `lastName`, `mobileNumber`, `address`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '$2y$10$Sa2fiIg/aeSFIMoMcrkMS.EGLZENraOsLJYR.6Pe2/EUOIRuAhkeS', 'kevincchavez@gmail.com', 'admin', NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, NULL),
-(2, 'twirlwhirl', '$2y$10$Sa2fiIg/aeSFIMoMcrkMS.EGLZENraOsLJYR.6Pe2/EUOIRuAhkeS', 'twirlwhirl@yahoo.com', 'bettor', NULL, NULL, 4275, 725, NULL, NULL, NULL, NULL, '', '', '', NULL, NULL, '10JQTBFpsOKP99F1K3S4paLx7NNYD6MoGR5VhShKcSR9UnuKGHJPZ7lKPiB0', NULL, '2017-08-04 06:27:14');
+(1, 'admin', '$2y$10$Sa2fiIg/aeSFIMoMcrkMS.EGLZENraOsLJYR.6Pe2/EUOIRuAhkeS', 'kevincchavez@gmail.com', 'admin', NULL, NULL, 56, 0, NULL, NULL, NULL, NULL, '', '', '', NULL, NULL, NULL, NULL, '2017-08-06 10:18:49'),
+(2, 'twirlwhirl', '$2y$10$Sa2fiIg/aeSFIMoMcrkMS.EGLZENraOsLJYR.6Pe2/EUOIRuAhkeS', 'twirlwhirl@yahoo.com', 'bettor', NULL, NULL, 0, 0, NULL, NULL, NULL, NULL, '', '', '', NULL, NULL, 'j2tQC5S2xNmREEz44sziZqJeCfpq5yhRlnZS23YqZCdveSZYXji9iinxykb0', NULL, '2017-08-05 17:27:55'),
+(4, 'kibeeen', '$2y$10$Sa2fiIg/aeSFIMoMcrkMS.EGLZENraOsLJYR.6Pe2/EUOIRuAhkeS', 'kevinchavez8@gmail.com', 'bettor', NULL, NULL, 390, 85, NULL, NULL, NULL, NULL, 'Kevin', 'C.', 'Chavez', NULL, NULL, NULL, NULL, '2017-08-06 15:23:07'),
+(5, 'betlord', '$2y$10$Sa2fiIg/aeSFIMoMcrkMS.EGLZENraOsLJYR.6Pe2/EUOIRuAhkeS', 'betlord@yahoo.com', 'Bettor', NULL, NULL, 972, 0, NULL, NULL, NULL, NULL, 'Bet', 'Bettor', 'Master', NULL, NULL, 'WxQ38aIp82RISPvlxaIQg0V9f2fX3Qtbhwao4PMP1j9uGCkMmzrJEzp8Zhao', NULL, '2017-08-06 10:18:49');
 
 -- --------------------------------------------------------
 
@@ -292,6 +295,7 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`, `displayIMG`
 CREATE TABLE `user_bets` (
   `id` int(10) UNSIGNED NOT NULL,
   `teamChosenID` int(11) DEFAULT NULL,
+  `teamNotChosenID` int(10) DEFAULT NULL,
   `coinsWagered` int(11) NOT NULL,
   `inPlay` tinyint(1) NOT NULL,
   `betWon` tinyint(1) DEFAULT NULL,
@@ -308,20 +312,14 @@ CREATE TABLE `user_bets` (
 -- Dumping data for table `user_bets`
 --
 
-INSERT INTO `user_bets` (`id`, `teamChosenID`, `coinsWagered`, `inPlay`, `betWon`, `betLose`, `betCancelled`, `betLocked`, `matchID`, `userID`, `created_at`, `updated_at`) VALUES
-(51, 6, 200, 1, NULL, NULL, 0, 1, 10, 2, '2017-08-03 17:35:06', '2017-08-04 03:59:40'),
-(52, 1, 35, 1, NULL, NULL, 0, 1, 10, 2, '2017-08-03 17:35:11', '2017-08-04 03:59:40'),
-(53, 6, 65, 1, NULL, NULL, 0, 1, 10, 2, '2017-08-03 17:35:18', '2017-08-04 03:59:40'),
-(54, 1, 125, 1, NULL, NULL, 0, 1, 10, 2, '2017-08-03 17:35:21', '2017-08-04 03:59:40'),
-(55, 1, 40, 1, NULL, NULL, 0, 1, 10, 2, '2017-08-03 17:35:30', '2017-08-04 03:59:40'),
-(56, 6, 60, 1, NULL, NULL, 0, 1, 10, 2, '2017-08-03 17:35:42', '2017-08-04 03:59:40'),
-(57, 1, 20, 1, NULL, NULL, 0, 1, 10, 2, '2017-08-04 03:22:36', '2017-08-04 03:59:40'),
-(58, 5, 50, 1, NULL, NULL, 0, 1, 11, 2, '2017-08-04 03:22:51', '2017-08-04 03:42:28'),
-(59, 7, 20, 1, NULL, NULL, 0, 1, 11, 2, '2017-08-04 03:22:56', '2017-08-04 03:42:28'),
-(60, 7, 50, 1, NULL, NULL, 0, 1, 11, 2, '2017-08-04 03:44:10', '2017-08-04 03:44:48'),
-(61, 10, 50, 1, NULL, NULL, 0, 0, 12, 2, '2017-08-04 06:14:15', '2017-08-04 06:14:15'),
-(62, 13, 5, 1, NULL, NULL, 0, 0, 12, 2, '2017-08-04 06:15:18', '2017-08-04 06:15:18'),
-(63, 6, 5, 1, NULL, NULL, 0, 0, 10, 2, '2017-08-04 06:27:14', '2017-08-04 06:27:14');
+INSERT INTO `user_bets` (`id`, `teamChosenID`, `teamNotChosenID`, `coinsWagered`, `inPlay`, `betWon`, `betLose`, `betCancelled`, `betLocked`, `matchID`, `userID`, `created_at`, `updated_at`) VALUES
+(82, 4, 0, 500, 0, 0, 1, 0, 1, 14, 2, '2017-08-05 17:06:08', '2017-08-05 17:27:55'),
+(83, 6, 0, 500, 0, 1, 0, 0, 1, 14, 4, '2017-08-05 17:06:16', '2017-08-05 17:27:55'),
+(84, 6, 0, 75, 1, NULL, NULL, 0, 0, 17, 4, '2017-08-05 18:18:00', '2017-08-05 18:18:00'),
+(85, 2, 0, 200, 0, 1, 0, 0, 1, 15, 5, '2017-08-06 03:55:38', '2017-08-06 10:18:49'),
+(86, 1, 0, 500, 0, 0, 1, 0, 1, 15, 4, '2017-08-06 04:09:02', '2017-08-06 10:18:49'),
+(87, 6, 0, 5, 1, NULL, NULL, 0, 0, 17, 4, '2017-08-06 13:45:55', '2017-08-06 13:45:55'),
+(88, 5, 0, 5, 1, NULL, NULL, 0, 0, 17, 4, '2017-08-06 15:23:07', '2017-08-06 15:23:07');
 
 -- --------------------------------------------------------
 
@@ -447,12 +445,12 @@ ALTER TABLE `game_series`
 -- AUTO_INCREMENT for table `leagues`
 --
 ALTER TABLE `leagues`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `matches`
 --
 ALTER TABLE `matches`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `match_categories`
 --
@@ -467,22 +465,22 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `sports_categories`
 --
 ALTER TABLE `sports_categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `user_bets`
 --
 ALTER TABLE `user_bets`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 --
 -- AUTO_INCREMENT for table `user_ranks`
 --

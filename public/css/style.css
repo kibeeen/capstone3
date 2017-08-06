@@ -351,7 +351,6 @@ a:hover {
 
             .vs-ico-recent {
                 width: 15px;
-                margin-top: -10px;
                 margin-right: 1px;
             }
 
@@ -359,6 +358,15 @@ a:hover {
                 color: #90b526;
                 font-size: 13px;
             }
+
+            .green{
+                color: #90b526 !important;
+            }
+
+            .red{
+                color: #ff2232 !important;
+            }
+
 
             .game-desc {
                 float: right;
@@ -600,9 +608,19 @@ a:hover {
                 text-align: center;
                 position: relative;
             }
-
+            
             .vs-score {
                 font-size: 20px;
+                font-family: 'Open Sans';
+                font-weight: 700;
+                width: 10%;
+                left: 50.5%;
+                position: absolute;
+                transform: translateX(-50%);
+            }
+
+            .vs-score-recent {
+                font-size: 15px;
                 font-family: 'Open Sans';
                 font-weight: 700;
                 width: 10%;
@@ -764,12 +782,20 @@ a:hover {
                     text-transform: uppercase;
                 }
 
+            /* -- recent bet side -- */
+                .recent-bets-sidebar {
+                    margin-bottom: 40px;
+                }
+
+                .won-bets-sidebar {
+                    margin-bottom: 20px;
+                }
 
 /* --- admin-panel --- */
 
     .admin-container {
         margin-top: 40px;
-        height: auto;
+        height: 95.5vh;
         color: #050505;
         background-color: #eee;
         padding: 15px;

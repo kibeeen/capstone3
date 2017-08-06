@@ -19,6 +19,7 @@ class CreateUserBets extends Migration
             $table->string('betType');
 
             $table->integer('teamChosenID');
+            $table->integer('teamnNotChosenID');
             $table->integer('coinsWagered');
 
             $table->boolean('inPlay');

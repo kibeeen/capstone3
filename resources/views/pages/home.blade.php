@@ -249,10 +249,11 @@
 											@endif
 											<img src="{{ asset($recent_match->MatchHomeTeam->teamLogo) }}" class='team-logo-md'>
 										</div>
-										<span class='vs-score'>
+										<span class='vs-score-recent'>
 											{{ $recent_match->homeTeamScore }}
 											 <span class='colon' id='colon'> : </span>  
 											{{ $recent_match->awayTeamScore }}
+											<br>
 											<img src="../uploads/admin/vs.png" class='vs-ico-recent'>
 										</span>
 
@@ -292,7 +293,8 @@
 
 
 @section('home-content-right')
-	@include("pages\sidebar", ['user_bets_all' => $user_bets_all], ['all_matches' => $all_matches])
+	@include("pages\sidebar", ['user_bets_won' => $user_bets_won])
+	{{-- @include("pages\sidebar", ['user_bets_all' => $user_bets_all], ['all_matches' => $all_matches], ['user_bets_won' => $user_bets_won]) --}}
 @endsection
 
 @section('javascripts')

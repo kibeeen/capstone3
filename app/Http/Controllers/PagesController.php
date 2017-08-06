@@ -27,25 +27,43 @@ class PagesController extends Controller
 		$user_bets_all = UserBet::where('userID',$user_id)->limit(12)->orderBy('updated_at','desc')->get();
 		$all_matches = Match::all();
 
-		
+        $user_bets_won = UserBet::where('userID',$user_id)
+        ->where('betWon',1)
+        ->orderBy('updated_at','desc')
+        ->get();
 
-		return view('pages/home', compact('matches','live_matches','user_bets_all','all_matches','recent_matches'));
-    	
+        $user_bets_lose = UserBet::where('userID',$user_id)
+        ->where('betWon',0)
+        ->orderBy('updated_at','desc')
+        ->get();
 
- 	
-
+		return view('pages/home', compact('matches','live_matches','user_bets_all','all_matches','recent_matches','user_bets_won','user_bets_lose'));
+    
         
 	}
 
 	public function displayTournamentPage($id){
     	$matches = Match::all()->where('id',$id);
-    	$user_bets = UserBet::where('matchID',$id)->orderBy('updated_at','desc')->get();
+
+        $user_bets = UserBet::where('matchID',$id)
+        ->orderBy('updated_at','desc')
+        ->get();
+
+    	$user_bets_won = UserBet::where('matchID',$id)
+        ->where('betWon',1)
+        ->orderBy('updated_at','desc')
+        ->get();
+
+        $user_bets_lose = UserBet::where('matchID',$id)
+        ->where('betWon',0)
+        ->orderBy('updated_at','desc')
+        ->get();
     	
     	
 
+        // dd($user_bets_won);
 
-
-        return view('pages/tournaments', compact('matches','user_bets'));
+        return view('pages/tournaments', compact('matches','user_bets_won','user_bets','user_bets_lose'));
 	}
 
 

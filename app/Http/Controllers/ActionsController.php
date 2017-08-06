@@ -75,7 +75,7 @@ class ActionsController extends Controller
                 $ateam = $team2->teamName;
             }
 
-            $match_tba->matchName = $request->add_match_date . " $request->add_match_time"  . " - " .$ateam . " vs " . $hteam;
+            $match_tba->matchName = $ateam . " vs " . $hteam;
 
 
 
@@ -156,29 +156,10 @@ class ActionsController extends Controller
 
                 foreach($find_bettors as $fbettors){
 
-                    // dd($obet->coinsWagered * $end_match->awayTeamOdds);
-                    $fbettors->coinsInPlay -= $obet->coinsWagered;
-                    // $fbettors->coins += ($obet->coinsWagered * $end_match->awayTeamOdds) + $obet->coinsWagered;
-                    
-                    // $coins = $fbettors->coins;
-                    $coinsInPlay = $fbettors->coinsInPlay;
-                   
-                    // add 5.5% betting fee coins to the bank
-                    // $bank += ($end_match->betsHomeTotal * 0.055);
+                $fbettors->coinsInPlay -= $obet->coinsWagered;
+                $coinsInPlay = $fbettors->coinsInPlay;
+
                 }
-
-                // $end_match->awayTeamWin = 1;
-                // $end_match->draw = 0;
-                // $end_match->homeTeamWin = 0;
-                // $end_match->inPlay = 0;
-                // $end_match->finished = 1;
-                // $end_match->save();
-
-
-                // $find_bet->inPlay = 0;
-                // $find_bet->betWon = 1;
-                // $find_bet->betLose = 0;
-                // $find_bet->betLocked = 1;
 
                 UserBet::where('matchID', $match_id)
                 ->where('teamChosenID','!=',$winner_team)
@@ -196,14 +177,6 @@ class ActionsController extends Controller
                 User::where('id', $obet->userID)->update(array(
                     'coinsInPlay' => $coinsInPlay
                     ));
-
-
-                // $admin_coins->coins = $bank;
-
-                // User::where('role', 'admin')->update(array(
-                //     'coins' => $bank
-                //     ));
-
             }
 
             foreach($find_bet as $fbet){
@@ -266,7 +239,115 @@ class ActionsController extends Controller
 
             }
 
-        } // end if statement
+        } // end of if
+
+        elseif($end_match->homeTeamID == $winner_team){
+
+            $find_bet = UserBet::where('matchID',$match_id)
+            ->where('teamChosenID',$winner_team)
+            ->get();
+
+            $other_bet = UserBet::where('matchID',$match_id)
+            ->where('teamChosenID','!=',$winner_team)
+            ->get();
+
+
+            $admin_coins = User::where('role','admin')->get();
+            foreach($admin_coins as $admin_coin){
+                $bank = $admin_coin->coins;
+            }
+
+            foreach($other_bet as $obet){
+
+                // find the bettor
+                $find_bettors = User::where('id',$obet->userID)->get();
+
+                foreach($find_bettors as $fbettors){
+
+                $fbettors->coinsInPlay -= $obet->coinsWagered;
+                $coinsInPlay = $fbettors->coinsInPlay;
+
+                }
+
+                UserBet::where('matchID', $match_id)
+                ->where('teamChosenID','!=',$winner_team)
+                ->update(array(
+                    'inPlay' => 0,
+                    'betWon' => 0,
+                    'betLose' => 1,
+                    'betLocked' => 1
+                    ));
+
+
+                // $find_bettors->coins = $coins;
+                $find_bettors->coinsInPlay = $coinsInPlay;
+
+                User::where('id', $obet->userID)->update(array(
+                    'coinsInPlay' => $coinsInPlay
+                    ));
+            }
+
+            foreach($find_bet as $fbet){
+
+                // find the bettor
+                $find_bettors = User::where('id',$fbet->userID)->get();
+
+                foreach($find_bettors as $fbettors){
+
+                    // dd($fbet->coinsWagered * $end_match->awayTeamOdds);
+                    $fbettors->coinsInPlay -= $fbet->coinsWagered;
+                    $fbettors->coins += ($fbet->coinsWagered * $end_match->homeTeamOdds) + $fbet->coinsWagered;
+                    
+
+                    $coins = $fbettors->coins;
+                    $coinsInPlay = $fbettors->coinsInPlay;
+                   
+                    // add 5.5% betting fee coins to the bank
+                    $bank += ($end_match->betsAwayTotal * 0.055);
+
+                }
+
+                $end_match->awayTeamWin = 0;
+                $end_match->draw = 0;
+                $end_match->homeTeamWin = 1;
+                $end_match->inPlay = 0;
+                $end_match->finished = 1;
+                $end_match->save();
+
+
+                $find_bet->inPlay = 0;
+                $find_bet->betWon = 1;
+                $find_bet->betLose = 0;
+                $find_bet->betLocked = 1;
+
+                UserBet::where('matchID', $match_id)
+                ->where('teamChosenID',$winner_team)
+                ->update(array(
+                    'inPlay' => 0,
+                    'betWon' => 1,
+                    'betLose' => 0,
+                    'betLocked' => 1
+                    ));
+
+
+                $find_bettors->coins = $coins;
+                $find_bettors->coinsInPlay = $coinsInPlay;
+
+                User::where('id', $fbet->userID)->update(array(
+                    'coins' => $coins,
+                    'coinsInPlay' => $coinsInPlay
+                    ));
+
+
+                $admin_coins->coins = $bank;
+
+                User::where('role', 'admin')->update(array(
+                    'coins' => $bank
+                    ));
+
+            }
+
+        } // end of elseif
   
         return redirect('/update-matches');
     }
@@ -286,7 +367,6 @@ class ActionsController extends Controller
 
         return redirect('/update-matches');
     }
-
     
     public function addTeam(request $request){
     	$team_tba = new Team();
@@ -326,6 +406,13 @@ class ActionsController extends Controller
         return redirect('/teams');
     }
 
+    public function deleteTeam($id){
+        $delete_team = Team::find($id);
+        $delete_team->delete();
+
+        return back();
+    }
+
     public function addLeague(request $request){
 
         $new_league = new League();
@@ -359,7 +446,7 @@ class ActionsController extends Controller
 
 	    // return back()->with('success','Image Upload successful');
 
-    	return redirect('/sports-categories');
+    	return redirect('/match-categories');
     }
 
     public function addSportsCategory(request $request){
@@ -380,7 +467,7 @@ class ActionsController extends Controller
 
         // return back()->with('success','Image Upload successful');
 
-        return redirect('/sports-category');
+        return redirect('/sports-categories');
     }    
 
     public function addGameSeries(request $request){

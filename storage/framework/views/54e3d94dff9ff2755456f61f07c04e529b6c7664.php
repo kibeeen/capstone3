@@ -103,7 +103,6 @@
 					
 				</ul>
 			</div>	
-
 		</div> 
 
 		<?php echo $__env->yieldContent('admin-home-content'); ?>

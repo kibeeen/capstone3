@@ -47,15 +47,20 @@
 						      	<select class="form-control" id="select_match_id" name='select_match_id' required>
 						      	<option selected disabled>Select a match to edit / delete</option>
 							  	@foreach($matches as $match)
-							    		@if($match->inPlay == 1)
+							    		@if($match->inPlay == 1 && $match->finished == 0)
 							    			<option value="{{ $match->id }}">
 								    			Live - 
-								    			{{ $match->matchName . " " . $match->id }}
+								    			{{ "[" . $match->id . "] " . $match->matchName }}
 							    			</option>
-							    		@elseif($match->inPlay == 0)
+							    		@elseif($match->inPlay == 0 && $match->finished == 0)
 							    			<option value="{{ $match->id }}">
 								    			Upcoming - 
-								    			{{ $match->matchName . " " . $match->id }}
+								    			{{ "[" . $match->id . "] " . $match->matchName }}
+							    			</option>
+						    			@elseif($match->inPlay == 0 && $match->finished == 1)
+							    			<option value="{{ $match->id }}" disabled>
+								    			Ended - 
+								    			{{ "[" . $match->id . "] " . $match->matchName }}
 							    			</option>
 						    			@endif
 							    	

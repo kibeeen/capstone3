@@ -145,80 +145,6 @@
 
 	@endforeach
 
-
-
-
-
-
-
-
-
-
-
-{{-- 
-		<!-- start of upcoming matches section -->
-		<div id='upcoming-matches' class='clearfix'>
-			<div class='matches-header-box'>
-				<h4 class='matches-header box-upcoming'> Upcoming Match</h4>
-			</div>
-
-			<!-- display teams -->
-			<ul class='ul-matches clearfix'>
-				@foreach($matches as $match)
-					<li>
-						<div class='game-id clearfix'>
-							<div class='game-info'>
-								<img src='{{ asset($match->MatchHomeTeam->TeamSportsCategory->sportsCatIMG) }}' class='game-ico'>
-								<span class='game-time'> 
-								{{ Carbon\Carbon::parse($match->startTime)->diffForHumans() }}</span>
-								<span class='game-desc'>{{ $match->MatchLeague->leagueName }}</span>
-							</div>
-
-							<!-- <a href='#'> -->
-								<div class='match clearfix'>
-									<div class='match-teams clearfix'>
-										<span class='team-1-name'>
-											{{ $match->MatchHomeTeam->teamName }}
-											<br>
-											{{ $match->homeTeamOdds }}%
-										</span>
-										<div class='team-1-logo'>
-											<img src="{{ asset($match->MatchHomeTeam->teamLogo) }}" class='team-logo-md'>
-										</div>
-										<span class='vs'>
-											{{ $match->GameSeries->gameSeriesName }}
-											<br>
-											<img src="../uploads/admin/vs.png" class='vs-ico'>
-										</span>
-
-										<span class='team-2-name'>
-											{{ $match->MatchAwayTeam->teamName }}
-											<br>
-											{{ $match->awayTeamOdds }}%
-										</span>
-										<div class='team-2-logo'>
-											<img src="{{ asset($match->MatchAwayTeam->teamLogo) }}" class='team-logo-md'>
-										</div>
-
-										
-										
-									</div>
-
-									<div class='match-tourney-img-box clearfix'>
-										<img src="{{ asset($match->MatchLeague->leagueBanner) }}" class='match-tourney-img'>
-									</div>
-								</div>
-							<!-- </a> -->
-
-						</div>
-					</li>
-				@endforeach
-			</ul>
-		</div> <!-- end of upcoming matches section --> --}}
-
-
-		
-
 	</div> <!-- end of home matches left section -->
 @endsection
 
@@ -226,7 +152,11 @@
 
 @section('home-content-right')
 
-	@include("pages\sidebar",['user_bets' => $user_bets], ['matches' => $matches])
+	@include("pages\sidebar", ['user_bets' => $user_bets])
+
+	{{-- @include("pages\sidebar", ['matches' => $matches], ['user_bets_won' => $user_bets_won]) --}}
+	
+
 
 @endsection
 		

@@ -152,7 +152,7 @@
 								    <i class="fa fa-floppy-o"></i>&nbsp; Update Team
 							    </button>&nbsp;
 							    
-							    <a href=' <?php echo e(url("/teams/delete/{id}")); ?>'>
+							    <a href=' <?php echo e(url("/teams/delete/")); ?>' id='delete_team_ahref'>
 								    <button type='button' class="btn btn-danger" id='delete_team' disabled>
 								    	<i class="fa fa-trash-o"></i>&nbsp; Delete Team
 								    </button>
@@ -246,6 +246,11 @@
 	        $('#edit_sports_category').removeAttr('disabled');
 	        $('#update_team').removeAttr('disabled');
 	        $('#delete_team').removeAttr('disabled');
+
+
+	        $('#delete_team_ahref').attr('href','/teams/delete/'+team_info.id);
+
+
 	        
 	    });
 

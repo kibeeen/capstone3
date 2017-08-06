@@ -103,7 +103,6 @@
 					
 				</ul>
 			</div>{{-- end of box 5 --}}	
-
 		</div> {{-- end of admin-sidebar --}}
 
 		@yield('admin-home-content')

@@ -258,12 +258,13 @@
 											<?php endif; ?>
 											<img src="<?php echo e(asset($recent_match->MatchHomeTeam->teamLogo)); ?>" class='team-logo-md'>
 										</div>
-										<span class='vs-score'>
+										<span class='vs-score-recent'>
 											<?php echo e($recent_match->homeTeamScore); ?>
 
 											 <span class='colon' id='colon'> : </span>  
 											<?php echo e($recent_match->awayTeamScore); ?>
 
+											<br>
 											<img src="../uploads/admin/vs.png" class='vs-ico-recent'>
 										</span>
 
@@ -304,7 +305,8 @@
 
 
 <?php $__env->startSection('home-content-right'); ?>
-	<?php echo $__env->make("pages\sidebar", ['user_bets_all' => $user_bets_all], ['all_matches' => $all_matches], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<?php echo $__env->make("pages\sidebar", ['user_bets_won' => $user_bets_won], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('javascripts'); ?>

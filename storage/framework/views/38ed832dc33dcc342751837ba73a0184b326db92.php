@@ -149,21 +149,6 @@
 
 	<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-
 	</div> <!-- end of home matches left section -->
 <?php $__env->stopSection(); ?>
 
@@ -171,7 +156,11 @@
 
 <?php $__env->startSection('home-content-right'); ?>
 
-	<?php echo $__env->make("pages\sidebar",['user_bets' => $user_bets], ['matches' => $matches], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<?php echo $__env->make("pages\sidebar", ['user_bets' => $user_bets], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+
+	
+	
+
 
 <?php $__env->stopSection(); ?>
 		

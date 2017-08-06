@@ -45,16 +45,22 @@
 						      	<select class="form-control" id="select_match_id" name='select_match_id' required>
 						      	<option selected disabled>Select a match to edit / delete</option>
 							  	<?php $__currentLoopData = $matches; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $match): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-							    		<?php if($match->inPlay == 1): ?>
+							    		<?php if($match->inPlay == 1 && $match->finished == 0): ?>
 							    			<option value="<?php echo e($match->id); ?>">
 								    			Live - 
-								    			<?php echo e($match->matchName . " " . $match->id); ?>
+								    			<?php echo e("[" . $match->id . "] " . $match->matchName); ?>
 
 							    			</option>
-							    		<?php elseif($match->inPlay == 0): ?>
+							    		<?php elseif($match->inPlay == 0 && $match->finished == 0): ?>
 							    			<option value="<?php echo e($match->id); ?>">
 								    			Upcoming - 
-								    			<?php echo e($match->matchName . " " . $match->id); ?>
+								    			<?php echo e("[" . $match->id . "] " . $match->matchName); ?>
+
+							    			</option>
+						    			<?php elseif($match->inPlay == 0 && $match->finished == 1): ?>
+							    			<option value="<?php echo e($match->id); ?>" disabled>
+								    			Ended - 
+								    			<?php echo e("[" . $match->id . "] " . $match->matchName); ?>
 
 							    			</option>
 						    			<?php endif; ?>

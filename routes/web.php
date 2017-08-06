@@ -106,7 +106,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 		$teamName = Team::find($get_teamID);
 
-		// echo json_encode($teamName);
+		echo json_encode($teamName);
 
 	});
 
