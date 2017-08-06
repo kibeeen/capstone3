@@ -305,6 +305,7 @@
 
 
 <?php $__env->startSection('home-content-right'); ?>
+	
 	<?php echo $__env->make("pages\sidebar", ['user_bets_won' => $user_bets_won], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 	
 <?php $__env->stopSection(); ?>
