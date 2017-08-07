@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2017 at 06:54 AM
+-- Generation Time: Aug 07, 2017 at 09:38 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.2
 
@@ -74,7 +74,8 @@ INSERT INTO `leagues` (`id`, `leagueName`, `leagueBanner`, `leagueStartDate`, `l
 (7, 'Champions League 2017', 'uploads/admin/league-banners/Champions League 2017.jpg', '2017-08-07', '2017-10-20', '2017-08-07 02:12:48', '2017-08-07 02:12:48'),
 (8, 'Bullang Bullang 7-Bullstag Derby', 'uploads/admin/league-banners/Bullang Bullang 7-Bullstag Derby.png', '2017-08-07', '2017-08-18', '2017-08-07 02:29:30', '2017-08-07 02:29:30'),
 (9, 'Will Drogon die and turn into ice dragon', 'uploads/admin/league-banners/Will Drogon die and turn into ice dragon.jpg', '2017-08-07', '2017-08-14', '2017-08-07 03:25:39', '2017-08-07 03:25:39'),
-(10, 'Si Shane na ba ang icing sa ibabaw ng donut ni Joel?', 'uploads/admin/league-banners/Ikaw na ba ang icing sa ibabaw ng cupcake ko.gif', '2017-08-07', '2017-08-08', '2017-08-07 03:38:51', '2017-08-07 03:38:51');
+(10, 'Si Shane na ba ang icing sa ibabaw ng donut ni Joel?', 'uploads/admin/league-banners/Ikaw na ba ang icing sa ibabaw ng cupcake ko.gif', '2017-08-07', '2017-08-08', '2017-08-07 03:38:51', '2017-08-07 03:38:51'),
+(11, 'Heads or Tails', 'uploads/admin/league-banners/Heads or Tails.jpg', '2017-08-07', '2017-08-07', '2017-08-07 05:29:10', '2017-08-07 05:29:10');
 
 -- --------------------------------------------------------
 
@@ -478,7 +479,7 @@ ALTER TABLE `game_series`
 -- AUTO_INCREMENT for table `leagues`
 --
 ALTER TABLE `leagues`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `matches`
 --
