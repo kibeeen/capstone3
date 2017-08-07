@@ -98,7 +98,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // [ajax] displayTeamOnEditPage
 	
-	Route::post('/api/displayTeam/', function(Request $request){
+	Route::post('/api.displayTeam', function(Request $request){
 
 		// alert('$request->team_name');
 
@@ -112,7 +112,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // [ajax] displayMatchInfoOnUpdatePage
 	
-	Route::post('/api/displayMatchInfo/', function(Request $request){
+	Route::post('/api.displayMatchInfo', function(Request $request){
 		
 		$get_matchID = $request->match_name;
 
