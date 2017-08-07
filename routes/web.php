@@ -35,10 +35,10 @@ use App\Match;
 
 // add matches page
 	Route::get('/matches','ActionsController@displayAddMatchesPage');
-	Route::post('/matches/add/', 'ActionsController@addMatch');
+	Route::post('/matches.add', 'ActionsController@addMatch');
 	Route::post('/matches.update', 'ActionsController@updateMatch');
 	Route::get('/matches/start/{id}', 'ActionsController@startMatch');
-	Route::post('/matches/end/', 'ActionsController@endMatch');
+	Route::post('/matches.end', 'ActionsController@endMatch');
 
 // add teams page
 	Route::get('/teams', 'ActionsController@displayPagesTeam');

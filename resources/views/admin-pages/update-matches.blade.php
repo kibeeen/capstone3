@@ -38,7 +38,7 @@
 
 				<div class="panel-body">
 
-					<form class="form-horizontal" action='/matches/update/' method="post">
+					<form class="form-horizontal" action='/matches.update' method="post">
 						{{ csrf_field() }}
 
 						<div class="form-group">
