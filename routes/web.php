@@ -36,7 +36,7 @@ use App\Match;
 // add matches page
 	Route::get('/matches','ActionsController@displayAddMatchesPage');
 	Route::post('/matches/add/', 'ActionsController@addMatch');
-	Route::post('/matches/update/', 'ActionsController@updateMatch');
+	Route::post('/matches.update', 'ActionsController@updateMatch');
 	Route::get('/matches/start/{id}', 'ActionsController@startMatch');
 	Route::post('/matches/end/', 'ActionsController@endMatch');
 

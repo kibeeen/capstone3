@@ -53,7 +53,7 @@ class ActionsController extends Controller
 
         $teams_participated = Match::where('id',10)->get();
 
-        return view('admin-pages/update-matches', compact('game_series','match_categories','teams','matches','leagues'));
+        return view('admin-pages.update-matches', compact('game_series','match_categories','teams','matches','leagues'));
     }
 
 
