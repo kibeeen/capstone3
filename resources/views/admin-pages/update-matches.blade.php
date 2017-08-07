@@ -189,7 +189,7 @@
 		    <div class="panel panel-primary margin-bot-0">
 			  	<div class="panel-heading end-match-panel">End Match</div>
 			 	<div class="panel-body">
-			 	<form class="form-horizontal" action='/matches/end/' method="post">
+			 	<form class="form-horizontal" action='/matches.end' method="post">
 						{{ csrf_field() }}
 
 			 		<div class="form-group">
