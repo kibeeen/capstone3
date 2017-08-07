@@ -106,12 +106,12 @@
 					{{ csrf_field() }}
 
 					<div class="radio">
-					  	<label><input type="radio" name="selected_team" value='{{ $match->MatchHomeTeam->id }}' required>
+					  	<label><input type="radio" name="selected_team" id='teamchosen1' value='{{ $match->MatchHomeTeam->id }}' required>
 					  		{{ $match->MatchHomeTeam->teamName }}
 				  		</label>
 					</div>
 					<div class="radio">
-					  	<label><input type="radio" name="selected_team" value='{{ $match->MatchAwayTeam->id }}' required>
+					  	<label><input type="radio" name="selected_team" id='teamchosen2' value='{{ $match->MatchAwayTeam->id }}' required>
 						  	{{ $match->MatchAwayTeam->teamName }}
 					  	</label>
 					</div>
