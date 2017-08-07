@@ -293,7 +293,7 @@
 
 @section('home-content-right')
 	
-	@include("pages\sidebar", ['user_bets_won' => $user_bets_won])
+	@include("pages.sidebar", ['user_bets_won' => $user_bets_won])
 	{{-- @include("pages\sidebar", ['user_bets_all' => $user_bets_all], ['all_matches' => $all_matches], ['user_bets_won' => $user_bets_won]) --}}
 @endsection
 
