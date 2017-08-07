@@ -245,7 +245,7 @@
 		$('#start-match-div').html("<a href='/matches/start/" + selected_team + "'><button type='button' class='form-control center-me btn btn-primary' id='start_match' name='start_match' disabled><i class='fa fa-play-circle'></i>&nbsp; Start Match</button></a>");
 
 
-		$.post("/api/displayMatchInfo/",
+		$.post("/api.displayMatchInfo",
 
 	    {
 	    	_token : token,
